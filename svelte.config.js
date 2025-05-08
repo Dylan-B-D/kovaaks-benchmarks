@@ -5,11 +5,10 @@ const config = {
 	preprocess: vitePreprocess(),
 	kit: {
 		adapter: adapter({
-			fallback: '200.html',
+			fallback: 'index.html',
 			prerender: {
 				entries: [
-					'*',
-					'/[benchmark]/[difficulty]/[userId]'
+					'*'
 				]
 			}
 		})
