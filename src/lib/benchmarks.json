@@ -1,0 +1,58 @@
+{
+	"voltaic-season-3": {
+		"label": "Voltaic Season 3",
+		"tabs": {
+			"intermediate": {
+				"id": 265,
+				"colors": {
+					"categories": {
+						"Clicking": "#CC0000",
+						"Tracking": "#1155CC",
+						"Switching": "#351C75"
+					},
+					"subCategories": {
+						"Dynamic": "#F1C232",
+						"Static": "#E06666",
+						"Precise": "#45818E",
+						"Reactive": "#3C78D8",
+						"Speed": "#A64D79",
+						"Evasive": "#674EA7"
+					},
+					"ranks": {
+						"Bronze": "#FF9900",
+						"Silver": "#CBD9E6",
+						"Gold": "#CAB148",
+						"Platinum": "#2FCFC2",
+						"Diamond": "#B9F2FF"
+					}
+				}
+			},
+			"advanced": {
+				"id": 266,
+				"colors": {
+					"categories": {
+						"Clicking": "#CC0000",
+						"Tracking": "#1155CC",
+						"Switching": "#351C75"
+					},
+					"subCategories": {
+						"Dynamic": "#F1C232",
+						"Static": "#E06666",
+						"Precise": "#45818E",
+						"Reactive": "#3C78D8",
+						"Speed": "#A64D79",
+						"Evasive": "#674EA7"
+					},
+					"ranks": {
+						"Jade": "#85FA85",
+						"Master": "#EC44CA",
+						"Grandmaster": "#FFD700",
+						"Nova": "#7900FF",
+						"Astra": "#FF2262",
+						"Celestial": "#000000"
+					}
+				}
+			}
+		}
+	}
+}
