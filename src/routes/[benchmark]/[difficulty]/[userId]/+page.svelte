@@ -113,9 +113,29 @@
     );
   }
 
+  function getLowestHighestRankPerSubCategory(): number {
+    const subCategoryRanks = new Map<string, number>();
+    
+    processCategoryEntries().forEach(({ category, categoryData }) => {
+      processScenarioEntries(categoryData).forEach(({ scenarioData: s, index: i }) => {
+        const subCategory = getSubCategory(category, i);
+        const currentRank = getRankForScore(s.score, s.rank_maxes);
+        
+        // For each subcategory, keep track of the highest rank achieved
+        if (!subCategoryRanks.has(subCategory) || currentRank > subCategoryRanks.get(subCategory)!) {
+          subCategoryRanks.set(subCategory, currentRank);
+        }
+      });
+    });
+    
+    // Find the lowest rank among the highest ranks of each subcategory
+    return Math.min(...Array.from(subCategoryRanks.values()));
+  }
+
   function getDisplayRank(): string {
-    const baseRank = data.ranks[data.overall_rank]?.name || 'Unknown';
-    return isRankComplete() && data.overall_rank > 0 ? `${baseRank} Complete` : baseRank;
+    const actualRank = getLowestHighestRankPerSubCategory();
+    const baseRank = data.ranks[actualRank]?.name || 'Unknown';
+    return isRankComplete() && actualRank > 0 ? `${baseRank} Complete` : baseRank;
   }
 </script>
 
@@ -149,8 +169,8 @@
         <div class="w-full flex justify-center">
           <span
             class="px-6 py-2 rounded-lg text-lg font-bold"
-            style="background-color: {data.colors.ranks[data.ranks[data.overall_rank]?.name] || '#1f2937'}; 
-                   color: {getTextColor(data.colors.ranks[data.ranks[data.overall_rank]?.name] || '#1f2937')}"
+            style="background-color: {data.colors.ranks[data.ranks[getLowestHighestRankPerSubCategory()]?.name] || '#1f2937'}; 
+                   color: {getTextColor(data.colors.ranks[data.ranks[getLowestHighestRankPerSubCategory()]?.name] || '#1f2937')}"
           >
             {getDisplayRank()}
           </span>
