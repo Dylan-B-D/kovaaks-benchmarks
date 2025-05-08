@@ -74,22 +74,4 @@ export async function load({ params, fetch }) {
 }
 
 
-export const prerender = true;
-
-export async function entries() {
-  const benchmarks = Object.keys(specs);
-  const entries = [];
-
-  for (const benchmark of benchmarks) {
-    const difficulties = Object.keys(specs[benchmark].tabs);
-    for (const difficulty of difficulties) {
-      entries.push({
-        benchmark,
-        difficulty,
-        userId: 'default' // placeholder user ID for prerendering
-      });
-    }
-  }
-
-  return entries;
-}
+export const prerender = false;
